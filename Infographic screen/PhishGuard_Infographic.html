@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PhishGuard — Project Infographic</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#080c14;--card:#0d1526;--card2:#0a1220;--border:#1a2540;
+  --blue:#4f8ef7;--orange:#f09040;--green:#56c97a;--red:#e05555;
+  --gold:#f5c842;--purple:#9b6ef3;--text:#dde4f0;--muted:#7a8fb0;
+}
+body{
+  width: 100vw;height:900px;background:var(--bg);color:var(--text);
+  font-family:'Segoe UI',system-ui,sans-serif;overflow-y:scroll; overflow-x: hidden;
+  display:flex;flex-direction:column;padding:11px;gap:9px;
+}
+
+/* ── HEADER ── */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#0c1f40 0%,#160c30 100%);
+  border:1px solid #2a3f70;border-radius:11px;
+  padding:0 18px;height:74px;flex-shrink:0;
+}
+.brand{display:flex;align-items:center;gap:13px;}
+.shield{
+  width:50px;height:50px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+}
+.brand h1{font-size:25px;font-weight:900;letter-spacing:-.5px;}
+.brand h1 span{color:var(--blue);}
+.brand p{font-size:11px;color:var(--muted);margin-top:2px;}
+.kpi-row{display:flex;gap:8px;}
+.kpi{
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:8px;padding:5px 11px;text-align:center;
+}
+.kpi .v{font-size:16px;font-weight:900;}
+.kpi .l{font-size:7.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:1px;}
+.team-block{text-align:right;}
+.team-block .names{font-size:11px;color:var(--muted);}
+.team-block .names b{color:var(--text);}
+.pills{display:flex;gap:6px;margin-top:5px;justify-content:flex-end;}
+.pill{
+  padding:2px 9px;border-radius:20px;font-size:9.5px;font-weight:600;
+}
+.pb{background:rgba(79,142,247,.15);color:var(--blue);border:1px solid rgba(79,142,247,.35);}
+.po{background:rgba(240,144,64,.15);color:var(--orange);border:1px solid rgba(240,144,64,.35);}
+.pg{background:rgba(86,201,122,.15);color:var(--green);border:1px solid rgba(86,201,122,.35);}
+
+/* ── MAIN GRID ── */
+.main{
+  display:grid;
+  grid-template-columns:252px 1fr 252px;
+  grid-template-rows:1fr 1fr;
+  gap:9px;flex:1;min-height:0;
+}
+
+/* ── CARD ── */
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:11px 13px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ct{
+  font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1.1px;color:var(--muted);
+  padding-bottom:7px;margin-bottom:8px;
+  border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.ct span{color:var(--blue);}
+
+/* LEFT spans both rows */
+.left{grid-column:1;grid-row:1/3;display:flex;flex-direction:column;gap:9px;}
+.right{grid-column:3;grid-row:1/3;display:flex;flex-direction:column;gap:9px;}
+.ct-top{grid-column:2;grid-row:1;}
+.ct-bot{grid-column:2;grid-row:2;}
+
+/* ── DATASET ── */
+.ds-name{font-size:11px;font-weight:700;margin-bottom:5px;}
+.ds-row{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:2px;}
+.ds-row b{color:var(--text);}
+.bar-bg{height:7px;background:#1a2540;border-radius:4px;overflow:hidden;display:flex;margin:3px 0 4px;}
+.legend-row{display:flex;gap:10px;font-size:8.5px;}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:3px;vertical-align:middle;}
+
+/* ── FEATURE LIST ── */
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 6px;}
+.fi{font-size:8.5px;color:var(--muted);display:flex;align-items:center;gap:3px;line-height:1.55;}
+.fi::before{content:'▸';font-size:8px;flex-shrink:0;}
+.fb::before{color:var(--blue);}
+.fo::before{color:var(--orange);}
+
+/* ── PIPELINE ── */
+.pipe{display:flex;align-items:stretch;gap:5px;margin-bottom:9px;flex-shrink:0;}
+.ps{
+  flex:1;background:linear-gradient(135deg,#152035,#0d1526);
+  border:1px solid #2a3f6f;border-radius:8px;
+  padding:7px 6px;text-align:center;
+}
+.ps .ic{font-size:16px;display:block;margin-bottom:2px;}
+.ps .lb{font-size:9px;font-weight:700;}
+.ps .sb{font-size:7.5px;color:var(--muted);margin-top:1px;}
+.arr{color:var(--blue);font-size:14px;align-self:center;flex-shrink:0;}
+
+/* ── PRE-PROCESS DETAIL ── */
+.pre-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0;}
+.pre-box{background:#070d1a;border:1px solid var(--border);border-radius:7px;padding:8px;}
+.pre-box .ph{font-size:9.5px;font-weight:700;margin-bottom:5px;}
+.pre-box ol{padding-left:13px;}
+.pre-box li{font-size:8.5px;color:var(--muted);line-height:1.65;}
+
+/* ── METRIC BARS ── */
+.m-row{display:flex;align-items:center;gap:7px;margin-bottom:6px;}
+.m-lbl{font-size:9px;width:88px;flex-shrink:0;color:var(--muted);}
+.m-bg{flex:1;height:9px;background:#1a2540;border-radius:5px;overflow:hidden;}
+.m-fill{height:100%;border-radius:5px;}
+.m-val{font-size:10px;font-weight:700;width:36px;text-align:right;flex-shrink:0;}
+
+/* ── SELECTED CARDS ── */
+.sel-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;}
+.sel{border-radius:8px;padding:8px;text-align:center;}
+.sel .sn{font-size:11px;font-weight:800;}
+.sel .sf{font-size:22px;font-weight:900;line-height:1.1;}
+.sel .sd{font-size:7.5px;color:var(--muted);margin-top:1px;}
+
+/* ── BOTTOM BAR ── */
+.bottom{
+  display:grid;grid-template-columns:1fr 260px;gap:9px;
+  height:148px;flex-shrink:0;
+}
+
+/* ── TIERS ── */
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;height:100%;}
+.tier{
+  border-radius:9px;padding:10px;text-align:center;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.tier .tn{font-size:19px;font-weight:900;margin-bottom:3px;}
+.tier .tt{font-size:10px;font-weight:700;margin-bottom:4px;}
+.tier .td{font-size:8px;color:var(--muted);line-height:1.5;}
+
+/* ── DEPLOY ── */
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.si{
+  display:flex;align-items:center;gap:7px;
+  background:#070d1a;border:1px solid var(--border);
+  border-radius:7px;padding:5px 7px;
+}
+.si .ic{font-size:14px;flex-shrink:0;}
+.si .sn{font-size:9.5px;font-weight:700;}
+.si .sd{font-size:7.5px;color:var(--muted);}
+.si-wide{grid-column:1/3;}
+
+/* Colour helpers */
+.blue{color:var(--blue)!important;}
+.orange{color:var(--orange)!important;}
+.green{color:var(--green)!important;}
+.red{color:var(--red)!important;}
+.gold{color:var(--gold)!important;}
+.pur{color:var(--purple)!important;}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="brand">
+    <div class="shield">🛡️</div>
+    <div>
+      <h1><span>Phish</span>Guard</h1>
+      <p>ML-Powered Spam Email &amp; Phishing URL Detection System &nbsp;·&nbsp; Machine Learning Lab Project</p>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="v green">0.98</div><div class="l">Email F1</div></div>
+    <div class="kpi"><div class="v orange">0.94</div><div class="l">URL F1</div></div>
+    <div class="kpi"><div class="v blue">99.1%</div><div class="l">Accuracy</div></div>
+    <div class="kpi"><div class="v gold">&lt;5ms</div><div class="l">Latency</div></div>
+    <div class="kpi"><div class="v pur">5</div><div class="l">Models</div></div>
+    <div class="kpi"><div class="v" style="color:#f06060;">0.3%</div><div class="l">Email FPR</div></div>
+  </div>
+
+  <div class="team-block">
+    <div class="names">
+      <b>Mohsin Raza Ojla</b> BSSE23040 &nbsp;·&nbsp;
+      <b>Muhammad Daniyal Hammad</b> BSSE23046 &nbsp;·&nbsp;
+      <b>Fatimah Imran</b> BSSE23098
+    </div>
+    <div class="pills">
+      <span class="pill pb">Dept. of Computer &amp; Software Engineering</span>
+      <span class="pill po">scikit-learn · XGBoost · NLTK</span>
+      <span class="pill pg">Flask · Docker · Bootstrap 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN GRID ═══ -->
+<div class="main">
+
+  <!-- ── LEFT COL ── -->
+  <div class="left">
+
+    <!-- Datasets -->
+    <div class="card" style="flex:1.1;">
+      <div class="ct">📊 <span>Datasets</span></div>
+
+      <div class="ds-name blue">📧 SMS Spam Collection (UCI)</div>
+      <div class="ds-row"><span>Total messages</span><b>5,574</b></div>
+      <div class="bar-bg">
+        <div style="width:87.4%;background:var(--green);"></div>
+        <div style="width:12.6%;background:var(--red);"></div>
+      </div>
+      <div class="legend-row">
+        <span><span class="dot" style="background:var(--green)"></span>Ham 87.4% (4,827)</span>
+        <span><span class="dot" style="background:var(--red)"></span>Spam 12.6% (747)</span>
+      </div>
+      <div style="font-size:8px;color:var(--muted);margin-top:3px;margin-bottom:10px;">Class imbalance → Macro F1 metric (not accuracy)</div>
+
+      <div class="ds-name orange">🔗 Phishing URL Corpus (faizann24)</div>
+      <div class="ds-row"><span>Stratified sample</span><b>30,000 URLs</b></div>
+      <div class="bar-bg">
+        <div style="width:50%;background:var(--blue);"></div>
+        <div style="width:50%;background:var(--orange);"></div>
+      </div>
+      <div class="legend-row">
+        <span><span class="dot" style="background:var(--blue)"></span>Legitimate 50%</span>
+        <span><span class="dot" style="background:var(--orange)"></span>Phishing 50%</span>
+      </div>
+      <div style="font-size:8px;color:var(--muted);margin-top:3px;">+100 curated legit URLs · 80/20 stratified split · seed=42</div>
+    </div>
+
+    <!-- Email Features -->
+    <div class="card" style="flex:1;">
+      <div class="ct">📧 <span>Email Features</span></div>
+      <div style="font-size:9px;font-weight:700;color:var(--blue);margin-bottom:3px;">TF-IDF Vectoriser</div>
+      <div style="font-size:8px;color:var(--muted);margin-bottom:8px;">Unigrams + Bigrams &nbsp;·&nbsp; 10,000 features &nbsp;·&nbsp; Sublinear TF</div>
+      <div style="font-size:9px;font-weight:700;color:var(--blue);margin-bottom:5px;">+ 8 Metadata Features</div>
+      <div class="f-grid">
+        <div class="fi fb">Text length</div>
+        <div class="fi fb">Word count</div>
+        <div class="fi fb">Currency symbol</div>
+        <div class="fi fb">Exclamation count</div>
+        <div class="fi fb">Capitals ratio</div>
+        <div class="fi fb">Has URL</div>
+        <div class="fi fb">Has phone</div>
+        <div class="fi fb">Digit ratio</div>
+      </div>
+      <div style="font-size:8px;color:var(--muted);margin-top:6px;">Combined via scipy.sparse.hstack + MinMaxScaler</div>
+    </div>
+
+  </div>
+
+  <!-- ── CENTER TOP: Pipeline ── -->
+  <div class="card ct-top">
+    <div class="ct">⚙️ <span>ML Pipeline</span> — End-to-End Flow</div>
+
+    <div class="pipe">
+      <div class="ps"><span class="ic">📂</span><div class="lb">Raw Data</div><div class="sb">CSV datasets</div></div>
+      <div class="arr">→</div>
+      <div class="ps"><span class="ic">🔧</span><div class="lb">Preprocess</div><div class="sb">Clean + tokenise</div></div>
+      <div class="arr">→</div>
+      <div class="ps"><span class="ic">🔢</span><div class="lb">Features</div><div class="sb">TF-IDF + crafted</div></div>
+      <div class="arr">→</div>
+      <div class="ps"><span class="ic">⚡</span><div class="lb">GridSearchCV</div><div class="sb">5-fold · f1_macro</div></div>
+      <div class="arr">→</div>
+      <div class="ps"><span class="ic">🏆</span><div class="lb">3-Tier Select</div><div class="sb">F1·Recall·Speed</div></div>
+      <div class="arr">→</div>
+      <div class="ps"><span class="ic">🚀</span><div class="lb">Deploy</div><div class="sb">Flask · Docker</div></div>
+    </div>
+
+    <div class="pre-grid" style="flex:1;min-height:0;">
+      <div class="pre-box">
+        <div class="ph blue">📧 Email Preprocessing</div>
+        <ol>
+          <li>Lowercase all text</li>
+          <li>HTML tag removal (BeautifulSoup)</li>
+          <li>URL → URLTOKEN, Phone → PHONETOKEN</li>
+          <li>Strip non-alphabetic characters</li>
+          <li>NLTK English stop-word removal</li>
+          <li>Porter stemming (NLTK)</li>
+        </ol>
+      </div>
+      <div class="pre-box">
+        <div class="ph orange">🔗 URL Preprocessing</div>
+        <ol>
+          <li>Strip scheme prefix (http/https/ftp://)</li>
+          <li>Remove leading www. subdomain</li>
+          <li>Tokenise on delimiters (/ . - _ ? = &amp; @ %)</li>
+          <li>Char-level TF-IDF (char_wb, 3–5 grams)</li>
+          <li>Extract 15 structural hand-crafted features</li>
+          <li>MinMaxScaler + scipy.sparse.hstack</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CENTER BOTTOM: Model Bar Chart ── -->
+  <div class="card ct-bot">
+    <div class="ct">📈 <span>Model Comparison</span> — Test F1-Score across all 5 GridSearchCV-tuned models &nbsp;·&nbsp; <span style="color:var(--blue);">■ Email</span> &nbsp;<span style="color:var(--orange);">■ URL</span> &nbsp;·&nbsp; † = Selected</div>
+    <svg viewBox="0 0 700 148" style="width:100%;flex:1;min-height:0;" font-family="Segoe UI,sans-serif">
+      <!-- Y gridlines (y=10→1.00, y=110→0.87, scale=769.2px/unit) -->
+      <line x1="68" y1="10"  x2="695" y2="10"  stroke="#1a2540" stroke-width="1"/>
+      <line x1="68" y1="33"  x2="695" y2="33"  stroke="#1a2540" stroke-width="1"/>
+      <line x1="68" y1="56"  x2="695" y2="56"  stroke="#1a2540" stroke-width="1"/>
+      <line x1="68" y1="79"  x2="695" y2="79"  stroke="#1a2540" stroke-width="1"/>
+      <line x1="68" y1="102" x2="695" y2="102" stroke="#1a2540" stroke-width="1"/>
+      <!-- Axes -->
+      <line x1="68" y1="10" x2="68" y2="112" stroke="#2a3f6f" stroke-width="1.5"/>
+      <line x1="68" y1="112" x2="695" y2="112" stroke="#2a3f6f" stroke-width="1.5"/>
+      <!-- Y labels -->
+      <text x="63" y="14"  fill="#7a8fb0" font-size="8" text-anchor="end">1.00</text>
+      <text x="63" y="37"  fill="#7a8fb0" font-size="8" text-anchor="end">0.97</text>
+      <text x="63" y="60"  fill="#7a8fb0" font-size="8" text-anchor="end">0.94</text>
+      <text x="63" y="83"  fill="#7a8fb0" font-size="8" text-anchor="end">0.91</text>
+      <text x="63" y="106" fill="#7a8fb0" font-size="8" text-anchor="end">0.88</text>
+
+      <!-- ── Group 1: Naive Bayes ── x=68+120*0=68, cx=128 -->
+      <!-- Email 0.980: h=(0.980-0.87)*769.2=84.6, y=112-84.6=27.4 -->
+      <rect x="84"  y="27" width="26" height="85" rx="3" fill="#4f8ef7" opacity=".9"/>
+      <text x="97"  y="24" fill="#4f8ef7" font-size="7.5" text-anchor="middle">0.980</text>
+      <!-- URL 0.903: h=(0.903-0.87)*769.2=25.4, y=112-25.4=86.6 -->
+      <rect x="114" y="87" width="26" height="25" rx="3" fill="#f09040" opacity=".9"/>
+      <text x="127" y="84" fill="#f09040" font-size="7.5" text-anchor="middle">0.903</text>
+      <text x="127" y="126" fill="#7a8fb0" font-size="8.5" text-anchor="middle">Naive Bayes</text>
+      <text x="127" y="137" fill="#56c97a" font-size="7.5" text-anchor="middle">★ Email</text>
+
+      <!-- ── Group 2: Logistic Reg ── cx=248 -->
+      <!-- Email 0.974: h=(0.974-0.87)*769.2=80.0, y=32 -->
+      <rect x="204" y="32" width="26" height="80" rx="3" fill="#4f8ef7" opacity=".9"/>
+      <text x="217" y="29" fill="#4f8ef7" font-size="7.5" text-anchor="middle">0.974 †</text>
+      <!-- URL 0.937: h=(0.937-0.87)*769.2=51.5, y=60.5 -->
+      <rect x="234" y="61" width="26" height="51" rx="3" fill="#f09040" opacity=".9"/>
+      <text x="247" y="58" fill="#f09040" font-size="7.5" text-anchor="middle">0.937 †</text>
+      <text x="247" y="126" fill="#7a8fb0" font-size="8.5" text-anchor="middle">Logistic Reg.</text>
+      <text x="247" y="137" fill="#f09040" font-size="7.5" text-anchor="middle">★ URL</text>
+
+      <!-- ── Group 3: Linear SVM ── cx=368 -->
+      <!-- Email 0.984: h=(0.984-0.87)*769.2=87.7, y=24 -->
+      <rect x="324" y="24" width="26" height="88" rx="3" fill="#4f8ef7" opacity=".9"/>
+      <text x="337" y="21" fill="#4f8ef7" font-size="7.5" text-anchor="middle">0.984</text>
+      <!-- URL 0.937 -->
+      <rect x="354" y="61" width="26" height="51" rx="3" fill="#f09040" opacity=".9"/>
+      <text x="367" y="58" fill="#f09040" font-size="7.5" text-anchor="middle">0.937</text>
+      <text x="367" y="126" fill="#7a8fb0" font-size="8.5" text-anchor="middle">Linear SVM</text>
+      <text x="367" y="137" fill="#7a8fb0" font-size="7.5" text-anchor="middle">9.3ms</text>
+
+      <!-- ── Group 4: Random Forest ── cx=488 -->
+      <!-- Email 0.964: h=(0.964-0.87)*769.2=72.3, y=39.7 -->
+      <rect x="444" y="40" width="26" height="72" rx="3" fill="#4f8ef7" opacity=".9"/>
+      <text x="457" y="37" fill="#4f8ef7" font-size="7.5" text-anchor="middle">0.964</text>
+      <!-- URL 0.944: h=(0.944-0.87)*769.2=56.9, y=55.1 -->
+      <rect x="474" y="55" width="26" height="57" rx="3" fill="#f09040" opacity=".9"/>
+      <text x="487" y="52" fill="#f09040" font-size="7.5" text-anchor="middle">0.944</text>
+      <text x="487" y="126" fill="#7a8fb0" font-size="8.5" text-anchor="middle">Random Forest</text>
+      <text x="487" y="137" fill="#7a8fb0" font-size="7.5" text-anchor="middle">203ms ✗</text>
+
+      <!-- ── Group 5: XGBoost ── cx=608 -->
+      <!-- Email 0.976: h=(0.976-0.87)*769.2=81.5, y=30.5 -->
+      <rect x="564" y="31" width="26" height="81" rx="3" fill="#4f8ef7" opacity=".9"/>
+      <text x="577" y="28" fill="#4f8ef7" font-size="7.5" text-anchor="middle">0.976</text>
+      <!-- URL 0.932: h=(0.932-0.87)*769.2=47.7, y=64.3 -->
+      <rect x="594" y="64" width="26" height="48" rx="3" fill="#f09040" opacity=".9"/>
+      <text x="607" y="61" fill="#f09040" font-size="7.5" text-anchor="middle">0.932</text>
+      <text x="607" y="126" fill="#7a8fb0" font-size="8.5" text-anchor="middle">XGBoost</text>
+      <text x="607" y="137" fill="#7a8fb0" font-size="7.5" text-anchor="middle">42ms</text>
+
+      <!-- Legend -->
+      <rect x="430" y="140" width="10" height="7" rx="2" fill="#4f8ef7"/>
+      <text x="444" y="147" fill="#dde4f0" font-size="8">Email Classifier</text>
+      <rect x="530" y="140" width="10" height="7" rx="2" fill="#f09040"/>
+      <text x="544" y="147" fill="#dde4f0" font-size="8">URL Classifier</text>
+      <text x="68"  y="147" fill="#7a8fb0" font-size="8">† Selected &nbsp;✗ Disqualified (Tier 3 latency)</text>
+    </svg>
+  </div>
+
+  <!-- ── RIGHT COL ── -->
+  <div class="right">
+
+    <!-- URL Features -->
+    <div class="card" style="flex:1.05;">
+      <div class="ct">🔗 <span>15 Hand-Crafted URL Features</span></div>
+      <div style="font-size:9px;font-weight:700;color:var(--orange);margin-bottom:3px;">char_wb TF-IDF (3–5 grams, 10k) + structural</div>
+      <div class="f-grid" style="margin-top:4px;">
+        <div class="fi fo">url_length</div>
+        <div class="fi fo">dot_count</div>
+        <div class="fi fo">slash_count</div>
+        <div class="fi fo">has_ip</div>
+        <div class="fi fo">is_https</div>
+        <div class="fi fo">has_at_symbol</div>
+        <div class="fi fo">domain_length</div>
+        <div class="fi fo">subdomain_count</div>
+        <div class="fi fo">path_length</div>
+        <div class="fi fo">num_params</div>
+        <div class="fi fo">has_port</div>
+        <div class="fi fo">special_chars</div>
+        <div class="fi fo">digit_ratio</div>
+        <div class="fi fo">vowel_ratio</div>
+        <div class="fi fo">Shannon entropy</div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="card" style="flex:1.2;">
+      <div class="ct">🏆 <span>Results — Selected Models</span></div>
+
+      <div class="sel-grid">
+        <div class="sel" style="background:#041406;border:1px solid #1a4020;">
+          <div style="font-size:8px;color:var(--muted);">EMAIL CLASSIFIER</div>
+          <div class="sn green">Naive Bayes</div>
+          <div class="sf green">0.98</div>
+          <div class="sd">CV F1=0.974 · 0.8ms</div>
+        </div>
+        <div class="sel" style="background:#14080a;border:1px solid #402010;">
+          <div style="font-size:8px;color:var(--muted);">URL CLASSIFIER</div>
+          <div class="sn orange">Logistic Reg.</div>
+          <div class="sf orange">0.94</div>
+          <div class="sd">CV F1=0.937 · 2.9ms</div>
+        </div>
+      </div>
+
+      <div class="m-row"><span class="m-lbl">Email Test F1</span><div class="m-bg"><div class="m-fill" style="width:98%;background:var(--green);"></div></div><span class="m-val green">0.980</span></div>
+      <div class="m-row"><span class="m-lbl">URL Test F1</span><div class="m-bg"><div class="m-fill" style="width:93.7%;background:var(--orange);"></div></div><span class="m-val orange">0.937</span></div>
+      <div class="m-row"><span class="m-lbl">Spam Recall</span><div class="m-bg"><div class="m-fill" style="width:95.3%;background:var(--blue);"></div></div><span class="m-val blue">0.953</span></div>
+      <div class="m-row"><span class="m-lbl">Phish Recall</span><div class="m-bg"><div class="m-fill" style="width:92.8%;background:var(--purple);"></div></div><span class="m-val pur">0.928</span></div>
+
+      <div style="display:flex;gap:5px;margin-top:4px;">
+        <div style="flex:1;text-align:center;background:#070d1a;border:1px solid var(--border);border-radius:6px;padding:4px 2px;">
+          <div style="font-size:14px;font-weight:900;color:var(--green);">99.1%</div>
+          <div style="font-size:7.5px;color:var(--muted);">Email Acc.</div>
+        </div>
+        <div style="flex:1;text-align:center;background:#070d1a;border:1px solid var(--border);border-radius:6px;padding:4px 2px;">
+          <div style="font-size:14px;font-weight:900;color:var(--red);">4.7%</div>
+          <div style="font-size:7.5px;color:var(--muted);">Email FNR</div>
+        </div>
+        <div style="flex:1;text-align:center;background:#070d1a;border:1px solid var(--border);border-radius:6px;padding:4px 2px;">
+          <div style="font-size:14px;font-weight:900;color:var(--gold);">&lt;5ms</div>
+          <div style="font-size:7.5px;color:var(--muted);">Latency</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ BOTTOM BAR ═══ -->
+<div class="bottom">
+
+  <!-- 3-Tier Strategy -->
+  <div class="card">
+    <div class="ct">🎯 <span>3-Tier Model Selection Strategy</span> — Security-Domain Aware · Applied after GridSearchCV</div>
+    <div class="tier-grid">
+      <div class="tier" style="background:linear-gradient(135deg,#2a2000,#0d1526);border:1px solid var(--gold);">
+        <div class="tn gold">TIER 1</div>
+        <div class="tt">Macro F1-Score</div>
+        <div class="td">Highest 5-fold CV macro F1. Weights both classes equally — critical for imbalanced datasets like SMS Spam (87/13 split).</div>
+      </div>
+      <div class="tier" style="background:linear-gradient(135deg,#2a1200,#0d1526);border:1px solid var(--orange);">
+        <div class="tn orange">TIER 2</div>
+        <div class="tt">Malicious Recall</div>
+        <div class="td">Highest recall on spam/phishing class within 0.5% tolerance. False negatives (missed threats) are more costly than false positives in security.</div>
+      </div>
+      <div class="tier" style="background:linear-gradient(135deg,#002a10,#0d1526);border:1px solid var(--green);">
+        <div class="tn green">TIER 3</div>
+        <div class="tt">Inference Speed</div>
+        <div class="td">Fastest inference latency within 0.5% tolerance. Ensures real-time detection (&lt;5ms). Disqualifies Random Forest (203ms) despite highest URL F1.</div>
+      </div>
+      <div class="tier" style="background:linear-gradient(135deg,#2a0000,#0d1526);border:1px solid var(--red);">
+        <div class="tn red">DQ</div>
+        <div class="tt">Disqualification</div>
+        <div class="td">Any model with hold-out test F1 &lt; 0.90 is eliminated before tier evaluation. All 5 models passed this gate on both tasks.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deployment Stack -->
+  <div class="card">
+    <div class="ct">🚀 <span>Deployment Stack</span></div>
+    <div class="stack">
+      <div class="si">
+        <span class="ic">🐍</span>
+        <div><div class="sn">Flask REST API</div><div class="sd">/predict/email · /predict/url · /health</div></div>
+      </div>
+      <div class="si">
+        <span class="ic">🐳</span>
+        <div><div class="sn">Docker + Compose</div><div class="sd">Build-time train · Volume mounts</div></div>
+      </div>
+      <div class="si">
+        <span class="ic">🎨</span>
+        <div><div class="sn">Bootstrap 5 Dark UI</div><div class="sd">Two-tab · Async fetch · Confidence %</div></div>
+      </div>
+      <div class="si">
+        <span class="ic">💾</span>
+        <div><div class="sn">joblib Serialisation</div><div class="sd">compress=3 · 4 pkl artefacts</div></div>
+      </div>
+      <div class="si si-wide">
+        <span class="ic">📤</span>
+        <div><div class="sn">Response: { "label": "SPAM" | "PHISHING" | "LEGITIMATE", "is_malicious": bool, "confidence": float }</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

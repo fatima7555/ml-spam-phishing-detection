@@ -1,0 +1,155 @@
+/* PhishGuard — custom styles (Bootstrap 5 dark theme override) */
+
+:root {
+  --brand: #4f8ef7;
+  --brand-light: rgba(79, 142, 247, 0.12);
+  --surface: #1e1e2e;
+  --surface-2: #252535;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background: #13131f;
+  color: #e2e2f0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.shield-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 16px rgba(79, 142, 247, 0.5));
+}
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  color: #a0a0c0;
+  padding: 0.65rem 1rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #e2e2f0;
+  background: var(--surface-2);
+}
+
+.nav-tabs .nav-link.active {
+  background: var(--surface-2);
+  color: var(--brand);
+  border-color: var(--border);
+  border-bottom-color: var(--surface-2);
+}
+
+/* ── Tab panel card ───────────────────────────────────────── */
+.card-panel {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-top: none;
+}
+
+/* ── Inputs ───────────────────────────────────────────────── */
+.custom-input {
+  background: #13131f;
+  border: 1px solid var(--border);
+  color: #e2e2f0;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.custom-input:focus {
+  background: #13131f;
+  border-color: var(--brand);
+  color: #e2e2f0;
+  box-shadow: 0 0 0 3px var(--brand-light);
+}
+
+.custom-input::placeholder {
+  color: #5a5a7a;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-primary:hover {
+  background: #3a7ae8;
+  border-color: #3a7ae8;
+}
+
+/* ── Result card ──────────────────────────────────────────── */
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Result badges ────────────────────────────────────────── */
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-danger-custom {
+  background: rgba(220, 53, 69, 0.15);
+  color: #ff6b7a;
+  border: 1.5px solid rgba(220, 53, 69, 0.4);
+}
+
+.badge-success-custom {
+  background: rgba(25, 135, 84, 0.15);
+  color: #40e09a;
+  border: 1.5px solid rgba(25, 135, 84, 0.4);
+}
+
+/* ── Info cards ───────────────────────────────────────────── */
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.info-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  color: #5a5a7a !important;
+}
+
+/* ── Responsive tweaks ────────────────────────────────────── */
+@media (max-width: 576px) {
+  .result-badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

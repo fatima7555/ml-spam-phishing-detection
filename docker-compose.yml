@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  phishguard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phishguard_app
+    ports:
+      - "5000:5000"
+    volumes:
+      # Persist trained models on host so Docker rebuild skips retraining
+      - ./saved_models:/app/saved_models
+      - ./data/raw:/app/data/raw
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

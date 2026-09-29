@@ -1,0 +1,152 @@
+============================================================
+  PHISHGUARD — DEMO RUN COMMANDS (Run in Order)
+  Open PowerShell in: C:\Users\aujla\Desktop\ML_Final_Project
+============================================================
+
+------------------------------------------------------------
+STEP 0 — Open PowerShell in the project folder
+------------------------------------------------------------
+
+Right-click inside the ML_Final_Project folder
+→ "Open in Terminal"  (or)  "Open PowerShell window here"
+
+Then confirm you are in the right folder:
+    pwd
+
+You should see:
+    C:\Users\aujla\Desktop\ML_Final_Project
+
+------------------------------------------------------------
+STEP 1 — Install all dependencies
+------------------------------------------------------------
+
+    pip install -r requirements.txt
+
+Wait for all packages to finish installing.
+(Takes 2–5 min on first run, instant if already installed)
+
+------------------------------------------------------------
+STEP 2 — Download NLTK language data (one-time only)
+------------------------------------------------------------
+
+    python -c "import nltk; nltk.download('stopwords'); nltk.download('punkt'); nltk.download('punkt_tab')"
+
+You should see:
+    [nltk_data] Downloading package stopwords... Done
+    [nltk_data] Downloading package punkt... Done
+
+------------------------------------------------------------
+STEP 3 — Download datasets
+------------------------------------------------------------
+
+    python data/download_data.py
+
+You should see messages about downloading SMS Spam and
+Phishing URL datasets into data/raw/
+
+------------------------------------------------------------
+STEP 4 — Train the Email Spam classifier
+------------------------------------------------------------
+
+    python train_email.py
+
+This takes 3–6 minutes (GridSearchCV 5-fold on 5 models).
+You will see all 5 model scores printed at the end.
+Saves: saved_models/email_model.pkl
+       saved_models/email_vectorizer.pkl
+
+------------------------------------------------------------
+STEP 5 — Train the Phishing URL classifier
+------------------------------------------------------------
+
+    python train_url.py
+
+This takes 5–10 minutes (larger dataset + 5 models).
+You will see all 5 model scores printed at the end.
+Saves: saved_models/url_model.pkl
+       saved_models/url_vectorizer.pkl
+
+------------------------------------------------------------
+STEP 6 — (Optional) Run full evaluation report
+------------------------------------------------------------
+
+    python evaluate.py
+
+Prints a comparison table of all 5 models for both
+classifiers with CV F1, Test F1, Recall, and Latency.
+Good to show during the demo / viva.
+
+------------------------------------------------------------
+STEP 7 — Start the web application
+------------------------------------------------------------
+
+    python webapp/app.py
+
+You should see:
+    * Running on http://127.0.0.1:5000
+    * Running on http://0.0.0.0:5000
+
+------------------------------------------------------------
+STEP 8 — Open the website in your browser
+------------------------------------------------------------
+
+Open any browser and go to:
+
+    http://localhost:5000
+
+The PhishGuard web interface will load with two tabs:
+    → Email Spam Checker
+    → URL Phishing Checker
+
+------------------------------------------------------------
+STEP 9 — Test it live (copy-paste these into the website)
+------------------------------------------------------------
+
+  SPAM EMAIL TEST:
+    Congratulations! You have been selected as our lucky
+    winner. Call NOW to claim your FREE iPhone prize worth
+    $1000. Limited time offer! Click here: bit.ly/win-now
+
+  LEGITIMATE EMAIL TEST:
+    Hey, are we still meeting tomorrow at 3pm for the
+    project review? Let me know if the time works for you.
+
+  PHISHING URL TEST:
+    paypal-security-alert.phishing-site.com/login/verify
+
+  LEGITIMATE URL TEST:
+    wikipedia.org/wiki/Machine_learning
+
+------------------------------------------------------------
+STEP 10 — Stop the server (when demo is done)
+------------------------------------------------------------
+
+Press:   Ctrl + C   in the PowerShell window
+
+============================================================
+  QUICK CHEAT SHEET (if everything already trained)
+============================================================
+
+If saved_models/ already has the 4 pkl files, just run:
+
+    python webapp/app.py
+
+Then open:  http://localhost:5000
+
+That's it — website is live instantly.
+
+============================================================
+  DOCKER ALTERNATIVE (one command, fully automated)
+============================================================
+
+If Docker Desktop is installed and running:
+
+    docker-compose build
+    docker-compose up
+
+Then open:  http://localhost:5000
+
+(docker-compose build takes 15–20 min first time as it
+downloads datasets and trains all models inside Docker)
+
+============================================================
